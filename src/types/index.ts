@@ -7,7 +7,7 @@ export type RootStackParamList = {
   Home: undefined;
   WorkOutDetail: { work_out_id: number };
   Profile: undefined;
-  DailyPlanDetail: { daily_plan: DailyPlanDetailsType };
+  DailyPlanDetail: { daily_plan: DailyPlanDetailsType; recent_day?: number };
   ExcerciseDetail: { excercise: ExerciseType };
 };
 

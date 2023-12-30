@@ -1,5 +1,5 @@
 import { View, Pressable, Image, ScrollView } from "react-native";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { NavigationProp, RouteProp } from "@react-navigation/native";
 import { RootStackParamList } from "../types";
 import { StyledComponent } from "nativewind";
@@ -7,6 +7,8 @@ import { arrowUturnLeftXML, playCircleXML } from "../icons";
 import { SvgXml } from "react-native-svg";
 import CustomText from "../components/texts/CustomText";
 import { DEFAULT_IMAGE } from "../contants";
+import { api } from "../../apis";
+import { useAuth } from "../contexts/AuthContext";
 
 type DailyPlanDetailScreenProps = {
   navigation: NavigationProp<RootStackParamList, "DailyPlanDetail">;
@@ -17,7 +19,11 @@ const DailyPlanDetailScreen: FC<DailyPlanDetailScreenProps> = ({
   navigation,
   route,
 }) => {
-  const { day, description, name, exercise, meal } = route.params.daily_plan;
+  const { day, description, name, exercise, meal, detail_id } =
+    route.params.daily_plan;
+  const recent_day = route.params.recent_day;
+  const { auth } = useAuth();
+  const [error, setError] = useState<string>();
   console.log("excersie ----------------------- ", exercise);
   return (
     <StyledComponent component={ScrollView} className="flex-1 bg-white">
@@ -46,9 +52,12 @@ const DailyPlanDetailScreen: FC<DailyPlanDetailScreenProps> = ({
             {description}
           </CustomText>
         </StyledComponent>
-        <StyledComponent component={Pressable} className="w-9 h-9" />
+        <StyledComponent component={View} className="w-9 h-9" />
       </StyledComponent>
-      <StyledComponent component={View} className="px-5 pt-10 space-y-10">
+      {error ? (
+        <CustomText classes="ml-5 text-[#d63031]">{error}</CustomText>
+      ) : null}
+      <StyledComponent component={View} className="px-5 pt-5 space-y-6">
         {exercise ? (
           <StyledComponent component={View} className="space-y-3">
             <CustomText fontFamily="Montserrat-SemiBold" classes="text-base">
@@ -83,7 +92,7 @@ const DailyPlanDetailScreen: FC<DailyPlanDetailScreenProps> = ({
               </StyledComponent>
               <StyledComponent component={View}>
                 <CustomText>{exercise.exercise_name}</CustomText>
-                <CustomText>{exercise.description}</CustomText>
+                {/* <CustomText>{exercise.description}</CustomText> */}
               </StyledComponent>
             </StyledComponent>
           </StyledComponent>
@@ -102,7 +111,7 @@ const DailyPlanDetailScreen: FC<DailyPlanDetailScreenProps> = ({
                 className="w-full h-[200] rounded-xl"
               />
               <StyledComponent component={View}>
-                <CustomText>
+                <CustomText fontFamily="Montserrat-SemiBold">
                   {meal.meal_name} -{" "}
                   <CustomText fontFamily="Montserrat-Medium">
                     {meal.calories}Cal
@@ -113,6 +122,36 @@ const DailyPlanDetailScreen: FC<DailyPlanDetailScreenProps> = ({
             </StyledComponent>
           </StyledComponent>
         ) : null}
+      </StyledComponent>
+      <StyledComponent
+        component={Pressable}
+        className="mx-5 rounded-lg bg-black items-center h-11 justify-center my-5"
+        onPress={async () => {
+          if (recent_day && day > recent_day) {
+            if (recent_day === day - 1 || day === 1) {
+              try {
+                const result = await api.post(
+                  "/dailycomplete/createdailycomplete",
+                  { user_id: auth?.user_id, detail_id: detail_id }
+                );
+                console.log(
+                  "/dailycomplete/createdailycomplete - ",
+                  result.data.data
+                );
+                navigation.goBack();
+              } catch (error) {
+                console.log("error - ", error);
+              }
+            } else {
+              console.log("abcdef");
+              setError("Bạn chưa hoàn thành bài tập ngày trước đó");
+            }
+          }
+        }}
+      >
+        <CustomText classes="text-white" fontFamily="Montserrat-Medium">
+          {recent_day && day <= recent_day ? "Đã hoàn thành" : "Hoàn thành"}
+        </CustomText>
       </StyledComponent>
     </StyledComponent>
   );

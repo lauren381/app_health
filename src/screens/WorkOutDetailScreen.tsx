@@ -151,7 +151,7 @@ const WorkOutDetailScreen: FC<WorkOutDetailScreenProps> = ({
               >
                 <SvgXml xml={clockXML} width={16} height={16} color={"#000"} />
                 <CustomText classes="ml-1">
-                  Total time: {workout.total_time} day
+                  Total time: {workout.total_time} h
                 </CustomText>
               </StyledComponent>
               <CustomText>
@@ -166,7 +166,10 @@ const WorkOutDetailScreen: FC<WorkOutDetailScreenProps> = ({
               </CustomText>
             </StyledComponent>
             {workout.DailyPlanDetails.length > 0 ? (
-              <DailyPlan data={workout.DailyPlanDetails} />
+              <DailyPlan
+                data={workout.DailyPlanDetails}
+                plan_id={workout.plan_id}
+              />
             ) : null}
             {/* {workout.PlanExercises.length > 0 ? (
               <PlanExercises data={workout.PlanExercises} />
