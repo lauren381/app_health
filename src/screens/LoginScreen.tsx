@@ -63,7 +63,7 @@ const LoginScreen: FC<LoginScreenProps> = ({ navigation }) => {
       />
       <StyledComponent component={View} className="flex-1 px-5 pt-28">
         <CustomText fontFamily="Montserrat-Medium" classes="text-2xl">
-          Login
+          Đăng nhập
         </CustomText>
         <StyledComponent component={View} className="mt-14 space-y-5">
           <StyledComponent component={View} className="space-y-2">
@@ -94,7 +94,7 @@ const LoginScreen: FC<LoginScreenProps> = ({ navigation }) => {
             </View>
           </StyledComponent>
           <StyledComponent component={View} className="space-y-2">
-            <CustomText fontFamily="Montserrat-Medium">Password</CustomText>
+            <CustomText fontFamily="Montserrat-Medium">Mật khẩu</CustomText>
             <View>
               <Controller
                 control={control}
@@ -128,17 +128,17 @@ const LoginScreen: FC<LoginScreenProps> = ({ navigation }) => {
           onPress={handleSubmit(onSubmit)}
         >
           <CustomText fontFamily="Montserrat-SemiBold" classes="text-white">
-            Login
+            Đăng nhập
           </CustomText>
         </StyledComponent>
         <CustomText classes="text-center pt-7">
-          Donot you have an account?{" "}
+          Bạn chưa có tài khoản?{" "}
           <CustomText
             textProps={{ onPress: () => navigation.navigate("SignIn") }}
             classes="underline"
             fontFamily="Montserrat-Medium"
           >
-            Sign Up
+            Đăng ký
           </CustomText>
         </CustomText>
       </StyledComponent>

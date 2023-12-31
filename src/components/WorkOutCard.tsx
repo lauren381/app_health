@@ -40,9 +40,9 @@ const WorkOutCard: FC<WorkOutCardProps> = ({ data, horizontal = false }) => {
             {data.plan_name}
           </CustomText>
         ) : null}
-        <CustomText>Goal: {data.goal}</CustomText>
-        <CustomText>Fitness level: {data.fitness_level}</CustomText>
-        <CustomText>Total time: {data.total_time} day</CustomText>
+        <CustomText>Mục tiêu: {data.goal}</CustomText>
+        <CustomText>Cấp độ: {data.fitness_level}</CustomText>
+        <CustomText>Thời gian: {data.total_time} ngày</CustomText>
       </StyledComponent>
     </StyledComponent>
   );

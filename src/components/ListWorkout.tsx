@@ -41,7 +41,7 @@ const ListWorkout: FC<ListWorkoutProps> = ({
   return (
     <StyledComponent component={View} className="space-y-3 px-5">
       <CustomText fontFamily="Montserrat-SemiBold" classes="text-lg uppercase">
-        List Workout
+        Danh sách kế hoạch
       </CustomText>
       {categories.length > 0 ? (
         <StyledComponent
@@ -72,7 +72,7 @@ const ListWorkout: FC<ListWorkoutProps> = ({
             }}
           >
             <CustomText fontFamily="Montserrat-Medium" classes="text-center">
-              All Workout
+              Tất cả
             </CustomText>
           </Pressable>
           {categories.map((item, index) => (

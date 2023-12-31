@@ -104,7 +104,7 @@ const HomeScreen: FC<HomeScreenProps> = ({ navigation }) => {
                   {auth.full_name} / {auth.weight}kg - {auth.height / 100}m
                 </CustomText>
                 <CustomText>
-                  Your BMI is {auth.health_index.toFixed(2)}
+                  Chỉ số BMI : {auth.health_index.toFixed(2)}
                 </CustomText>
               </StyledComponent>
             </StyledComponent>

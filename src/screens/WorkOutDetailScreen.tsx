@@ -151,17 +151,17 @@ const WorkOutDetailScreen: FC<WorkOutDetailScreenProps> = ({
               >
                 <SvgXml xml={clockXML} width={16} height={16} color={"#000"} />
                 <CustomText classes="ml-1">
-                  Total time: {workout.total_time} h
+                  Thời gian: {workout.total_time} ngày
                 </CustomText>
               </StyledComponent>
               <CustomText>
-                <CustomText fontFamily="Montserrat-Medium">Goal:</CustomText>{" "}
+                <CustomText fontFamily="Montserrat-Medium">
+                  Mục tiêu:
+                </CustomText>{" "}
                 {workout.goal}
               </CustomText>
               <CustomText>
-                <CustomText fontFamily="Montserrat-Medium">
-                  Fitness level:
-                </CustomText>{" "}
+                <CustomText fontFamily="Montserrat-Medium">Cấp độ:</CustomText>{" "}
                 {workout.fitness_level}
               </CustomText>
             </StyledComponent>
@@ -171,12 +171,6 @@ const WorkOutDetailScreen: FC<WorkOutDetailScreenProps> = ({
                 plan_id={workout.plan_id}
               />
             ) : null}
-            {/* {workout.PlanExercises.length > 0 ? (
-              <PlanExercises data={workout.PlanExercises} />
-            ) : null}
-            {workout.PlanMeals.length > 0 ? (
-              <PlanMeals data={workout.PlanMeals} />
-            ) : null} */}
           </StyledComponent>
         </ScrollView>
       </View>

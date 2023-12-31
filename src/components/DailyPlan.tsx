@@ -19,7 +19,6 @@ type DailyPlanProps = {
 };
 
 const DailyPlan: FC<DailyPlanProps> = ({ data, plan_id }) => {
-  // console.log("data daily plan ~ ", data);
   const { auth } = useAuth();
   console.log("plan id - ", plan_id);
   const navigation =
@@ -43,11 +42,12 @@ const DailyPlan: FC<DailyPlanProps> = ({ data, plan_id }) => {
       }
     })();
   }, [isFocused]);
+  // console.log("data daily plan ~ ", historyDay);
   return (
     <StyledComponent component={View} className="space-y-2 pt-7">
-      <CustomText fontFamily="Montserrat-SemiBold" classes="text-base px-5">
+      {/* <CustomText fontFamily="Montserrat-SemiBold" classes="text-base px-5">
         Daily Plan
-      </CustomText>
+      </CustomText> */}
       <StyledComponent component={View} className="px-4">
         {data.map((item, index) => {
           const complete = historyDay.some(
@@ -71,7 +71,7 @@ const DailyPlan: FC<DailyPlanProps> = ({ data, plan_id }) => {
             >
               <StyledComponent component={View}>
                 <CustomText fontFamily="Montserrat-Medium">
-                  Day {item.day} - {item.name}
+                  Ngày {item.day} - {item.name}
                 </CustomText>
                 {/* <CustomText
                   textProps={{ numberOfLines: 1, ellipsizeMode: "middle" }}

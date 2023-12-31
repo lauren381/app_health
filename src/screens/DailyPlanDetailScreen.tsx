@@ -1,5 +1,5 @@
-import { View, Pressable, Image, ScrollView } from "react-native";
-import React, { FC, useState } from "react";
+import { View, Pressable, Image, ScrollView, Alert } from "react-native";
+import React, { FC, useEffect, useState } from "react";
 import { NavigationProp, RouteProp } from "@react-navigation/native";
 import { RootStackParamList } from "../types";
 import { StyledComponent } from "nativewind";
@@ -22,6 +22,7 @@ const DailyPlanDetailScreen: FC<DailyPlanDetailScreenProps> = ({
   const { day, description, name, exercise, meal, detail_id } =
     route.params.daily_plan;
   const recent_day = route.params.recent_day;
+  console.log("recent_day", recent_day);
   const { auth } = useAuth();
   const [error, setError] = useState<string>();
   console.log("excersie ----------------------- ", exercise);
@@ -46,7 +47,7 @@ const DailyPlanDetailScreen: FC<DailyPlanDetailScreenProps> = ({
         </StyledComponent>
         <StyledComponent component={View} className="items-center w-3/4">
           <CustomText fontFamily="Montserrat-SemiBold" classes="text-base">
-            Day {day} - {name}
+            Ngày {day} - {name}
           </CustomText>
           <CustomText fontFamily="Montserrat-Medium" classes="text-center">
             {description}
@@ -61,7 +62,7 @@ const DailyPlanDetailScreen: FC<DailyPlanDetailScreenProps> = ({
         {exercise ? (
           <StyledComponent component={View} className="space-y-3">
             <CustomText fontFamily="Montserrat-SemiBold" classes="text-base">
-              Exercise
+              Bài tập
             </CustomText>
             <StyledComponent
               component={Pressable}
@@ -100,7 +101,7 @@ const DailyPlanDetailScreen: FC<DailyPlanDetailScreenProps> = ({
         {meal ? (
           <StyledComponent component={View} className="space-y-3">
             <CustomText fontFamily="Montserrat-SemiBold" classes="text-base">
-              Meal
+              Thực đơn
             </CustomText>
             <StyledComponent component={View} className="space-y-3">
               <StyledComponent
@@ -127,7 +128,7 @@ const DailyPlanDetailScreen: FC<DailyPlanDetailScreenProps> = ({
         component={Pressable}
         className="mx-5 rounded-lg bg-black items-center h-11 justify-center my-5"
         onPress={async () => {
-          if (recent_day && day > recent_day) {
+          if ((recent_day && day > recent_day) || (!recent_day && day === 1)) {
             if (recent_day === day - 1 || day === 1) {
               try {
                 const result = await api.post(
@@ -143,9 +144,17 @@ const DailyPlanDetailScreen: FC<DailyPlanDetailScreenProps> = ({
                 console.log("error - ", error);
               }
             } else {
-              console.log("abcdef");
-              setError("Bạn chưa hoàn thành bài tập ngày trước đó");
+              Alert.alert(
+                "Thông báo",
+                "Bạn chưa hoàn thành bài tập ngày trước đó!",
+                [{ text: "OK", onPress: () => console.log("OK Pressed") }]
+              );
             }
+          } else {
+            console.log("error");
+            Alert.alert("Thông báo", "Bạn đã hoàn thành!", [
+              { text: "OK", onPress: () => console.log("OK Pressed") },
+            ]);
           }
         }}
       >

@@ -19,7 +19,7 @@ const MyWorkout: FC<MyWorkoutProps> = ({ data }) => {
         fontFamily="Montserrat-SemiBold"
         classes="text-lg uppercase mx-5"
       >
-        My Workout
+        Bài tập của tôi
       </CustomText>
       <FlatList
         contentContainerStyle={{

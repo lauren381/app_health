@@ -96,7 +96,7 @@ const ProfileScreen: FC<ProfileScreenProps> = ({ navigation }) => {
               classes="text-base text-[#75b8ed]"
               fontFamily="Montserrat-Medium"
             >
-              Edit Profile
+              Chỉnh sửa
             </CustomText>
           </StyledComponent>
         </StyledComponent>
@@ -152,7 +152,7 @@ const ProfileScreen: FC<ProfileScreenProps> = ({ navigation }) => {
               fontFamily="Montserrat-Medium"
               classes={editable ? "text-black" : "text-gray-300"}
             >
-              Phone number
+              Số điện thoại
             </CustomText>
             <View>
               <Controller
@@ -188,7 +188,7 @@ const ProfileScreen: FC<ProfileScreenProps> = ({ navigation }) => {
                 fontFamily="Montserrat-Medium"
                 classes={editable ? "text-black" : "text-gray-300"}
               >
-                Weight
+                Cân nặng
               </CustomText>
               <View>
                 <Controller
@@ -224,7 +224,7 @@ const ProfileScreen: FC<ProfileScreenProps> = ({ navigation }) => {
                 fontFamily="Montserrat-Medium"
                 classes={editable ? "text-black" : "text-gray-300"}
               >
-                Height
+                Chiều cao
               </CustomText>
               <View>
                 <Controller
@@ -264,7 +264,7 @@ const ProfileScreen: FC<ProfileScreenProps> = ({ navigation }) => {
             onPress={handleSubmit(onSubmit)}
           >
             <CustomText fontFamily="Montserrat-SemiBold" classes="text-white">
-              Update Profile
+              Chỉnh sửa
             </CustomText>
           </StyledComponent>
         </StyledComponent>

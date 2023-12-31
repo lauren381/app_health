@@ -75,12 +75,12 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
       />
       <StyledComponent component={View} className="flex-1 px-5 pt-10">
         <CustomText fontFamily="Montserrat-Medium" classes="text-2xl">
-          Sign Up
+          Đăng ký
         </CustomText>
         <StyledComponent component={View} className="mt-7 space-y-3">
           <StyledComponent component={View} className="space-y-2">
             <CustomText fontFamily="Montserrat-Medium">
-              Username 
+              Tên người dùng
             </CustomText>
             <View>
               <Controller
@@ -135,7 +135,7 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
             </View>
             <StyledComponent component={View} className="space-y-2">
               <CustomText fontFamily="Montserrat-Medium">
-                Phone number
+                Số điện thoại
               </CustomText>
               <View>
                 <Controller
@@ -165,7 +165,7 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
           </StyledComponent>
           <StyledComponent component={View} className="flex-row space-x-5">
             <StyledComponent component={View} className="space-y-2 flex-1">
-              <CustomText fontFamily="Montserrat-Medium">Weight</CustomText>
+              <CustomText fontFamily="Montserrat-Medium">Cân nặng</CustomText>
               <View>
                 <Controller
                   control={control}
@@ -193,7 +193,7 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
               </View>
             </StyledComponent>
             <StyledComponent component={View} className="space-y-2 flex-1">
-              <CustomText fontFamily="Montserrat-Medium">Height</CustomText>
+              <CustomText fontFamily="Montserrat-Medium">Chiều cao</CustomText>
               <View>
                 <Controller
                   control={control}
@@ -222,7 +222,7 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
             </StyledComponent>
           </StyledComponent>
           <StyledComponent component={View} className="space-y-2">
-            <CustomText fontFamily="Montserrat-Medium">Password</CustomText>
+            <CustomText fontFamily="Montserrat-Medium">Mật khẩu</CustomText>
             <View>
               <Controller
                 control={control}
@@ -256,17 +256,17 @@ const SignInScreen: FC<SignInScreenProps> = ({ navigation }) => {
           onPress={handleSubmit(onSubmit)}
         >
           <CustomText fontFamily="Montserrat-SemiBold" classes="text-white">
-            Sign Up
+            Đăng ký
           </CustomText>
         </StyledComponent>
         <CustomText classes="text-center pt-7">
-          Do you have an account?{" "}
+          Bạn đã có tài khoản?{" "}
           <CustomText
             textProps={{ onPress: () => navigation.navigate("LogIn") }}
             classes="underline"
             fontFamily="Montserrat-Medium"
           >
-            Login
+            Đăng nhập
           </CustomText>
         </CustomText>
       </StyledComponent>
